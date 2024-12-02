@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwmkwolp74f4p"
-path="res://.godot/imported/flashlight_pointlight.png-4251c199e3cab409a548c933c75b4c8a.ctex"
+uid="uid://dcrm66mql6ywi"
+path="res://.godot/imported/Adam_idle_anim_16x16.png-de8c93219e9b0161f2d260148a1c6578.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://flashlight_pointlight.png"
-dest_files=["res://.godot/imported/flashlight_pointlight.png-4251c199e3cab409a548c933c75b4c8a.ctex"]
+source_file="res://Textures/Adam_idle_anim_16x16.png"
+dest_files=["res://.godot/imported/Adam_idle_anim_16x16.png-de8c93219e9b0161f2d260148a1c6578.ctex"]
 
 [params]
 

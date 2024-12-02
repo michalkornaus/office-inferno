@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcrm66mql6ywi"
-path="res://.godot/imported/Adam_idle_anim_16x16.png-301eb6f14a1a5810a25fb20d893c2003.ctex"
+uid="uid://da0jum6prm7ki"
+path="res://.godot/imported/neutral_point_light.webp-3341545173d0d2b5fac1eac05c01eb85.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Adam_idle_anim_16x16.png"
-dest_files=["res://.godot/imported/Adam_idle_anim_16x16.png-301eb6f14a1a5810a25fb20d893c2003.ctex"]
+source_file="res://Textures/neutral_point_light.webp"
+dest_files=["res://.godot/imported/neutral_point_light.webp-3341545173d0d2b5fac1eac05c01eb85.ctex"]
 
 [params]
 
@@ -26,7 +26,7 @@ mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true
-process/premult_alpha=false
+process/premult_alpha=true
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
