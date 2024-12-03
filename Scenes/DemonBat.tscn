@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cn3mftxvn0ajl"]
+[gd_scene load_steps=10 format=3 uid="uid://cn3mftxvn0ajl"]
 
 [ext_resource type="Texture2D" uid="uid://dctyu0v4vy64r" path="res://Textures/Nietoperek.png" id="1_refi1"]
 [ext_resource type="Script" path="res://Scripts/DemonBat.gd" id="1_seol0"]
@@ -42,6 +42,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_dm8oq"]
 radius = 5.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_il7d4"]
+radius = 150.0
+
 [node name="DemonBat" type="CharacterBody2D"]
 script = ExtResource("1_seol0")
 
@@ -55,3 +58,10 @@ frame_progress = 0.22637
 shape = SubResource("CircleShape2D_dm8oq")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="DetectionArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea2D"]
+shape = SubResource("CircleShape2D_il7d4")
+
+[connection signal="body_entered" from="DetectionArea2D" to="." method="_on_detection_area_2d_body_entered"]
