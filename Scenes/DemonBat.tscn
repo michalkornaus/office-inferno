@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cn3mftxvn0ajl"]
+[gd_scene load_steps=9 format=3 uid="uid://cn3mftxvn0ajl"]
 
 [ext_resource type="Texture2D" uid="uid://dctyu0v4vy64r" path="res://Textures/Nietoperek.png" id="1_refi1"]
+[ext_resource type="Script" path="res://Scripts/DemonBat.gd" id="1_seol0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eu0qi"]
 atlas = ExtResource("1_refi1")
@@ -42,6 +43,7 @@ animations = [{
 radius = 5.0
 
 [node name="DemonBat" type="CharacterBody2D"]
+script = ExtResource("1_seol0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2sw3y")
@@ -51,3 +53,5 @@ frame_progress = 0.22637
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dm8oq")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
