@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var speed = 100
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var gun_sprite: Sprite2D = $ItemsHolder/GunSprite2D
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -24,7 +25,11 @@ func rotate_player():
 		animated_sprite.animation = "run_" + dir_string
 	else:
 		animated_sprite.animation = "idle_" + dir_string
-
+	if deg_rot > 90 || deg_rot < -90:
+		gun_sprite.flip_v = true
+	else:
+		gun_sprite.flip_v = false
+		
 func _physics_process(delta):
 	get_input()
 	rotate_player()
