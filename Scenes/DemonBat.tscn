@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://cn3mftxvn0ajl"]
+
+[ext_resource type="Texture2D" uid="uid://dctyu0v4vy64r" path="res://Textures/Nietoperek.png" id="1_refi1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eu0qi"]
+atlas = ExtResource("1_refi1")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n58om"]
+atlas = ExtResource("1_refi1")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1h80p"]
+atlas = ExtResource("1_refi1")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvo6b"]
+atlas = ExtResource("1_refi1")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2sw3y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eu0qi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n58om")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1h80p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvo6b")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dm8oq"]
+radius = 5.0
+
+[node name="DemonBat" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2sw3y")
+animation = &"fly"
+autoplay = "fly"
+frame_progress = 0.22637
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dm8oq")
