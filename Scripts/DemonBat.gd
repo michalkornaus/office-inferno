@@ -4,6 +4,11 @@ var movement_speed: float = 50.0
 var movement_target_position: Vector2
 var target: CharacterBody2D
 
+@export var attack_damage: float = 5.0
+@export var attack_cooldown: float = 1.5
+@onready var attack_timer: Timer = $AttackTimer
+var can_attack: bool = false
+
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 var mapRID: RID
 var regionRID: RID
@@ -11,6 +16,7 @@ var regionRID: RID
 func _ready():
 	navigation_agent.path_desired_distance = 4.0
 	navigation_agent.target_desired_distance = 4.0
+	attack_timer.wait_time = attack_cooldown
 	actor_setup.call_deferred()
 
 func actor_setup():
@@ -35,7 +41,7 @@ func set_movement_target(movement_target: Vector2):
 
 func _physics_process(delta):
 	if navigation_agent.is_navigation_finished() && target == null && navigation_agent.is_target_reached():
-		print("Finding new destination point!")
+		#print("Finding new destination point!")
 		set_movement_target(await find_random_destination(75))
 		return
 		
@@ -52,3 +58,18 @@ func _physics_process(delta):
 func _on_detection_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
 		target = body
+
+func _on_hit_area_2d_body_entered(body):
+	if body == target:
+		can_attack = true
+		if attack_timer.is_stopped():
+			attack_timer.start()
+
+func _on_hit_area_2d_body_exited(body):
+	if body == target:
+		can_attack = false
+
+func _on_attack_timer_timeout():
+	if can_attack:
+		target.change_health(-attack_damage, "Physical")
+		attack_timer.start()

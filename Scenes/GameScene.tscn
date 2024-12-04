@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://v18t2wnr7kcu"]
+[gd_scene load_steps=89 format=4 uid="uid://v18t2wnr7kcu"]
 
 [ext_resource type="Texture2D" uid="uid://bgaclpt6b4jbu" path="res://Textures/Room_Builder_free_16x16.png" id="1_hcseg"]
 [ext_resource type="Texture2D" uid="uid://b4i3wf3eri56p" path="res://Textures/Interiors_free_16x16.png" id="2_0vfrd"]
@@ -7,12 +7,13 @@
 [ext_resource type="Script" path="res://Scripts/BlinkingLight.gd" id="4_yfw1l"]
 [ext_resource type="Texture2D" uid="uid://bb0vxglk5csgw" path="res://Textures/DeskWithChair.png" id="4_yrslb"]
 [ext_resource type="Script" path="res://Scripts/CameraMovement.gd" id="5_00dp4"]
-[ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="6_184o1"]
 [ext_resource type="Texture2D" uid="uid://dbkdqhondkxvt" path="res://Textures/Bob_idle_anim_16x16.png" id="7_c1upt"]
 [ext_resource type="Texture2D" uid="uid://c3daby40e1hu7" path="res://Textures/Bob_run_16x16.png" id="8_0yjue"]
 [ext_resource type="Script" path="res://Scripts/Flashlight.gd" id="8_3ilbq"]
+[ext_resource type="Script" path="res://Scripts/PlayerBehaviour.gd" id="8_awom0"]
 [ext_resource type="Texture2D" uid="uid://bwmkwolp74f4p" path="res://Textures/flashlight_pointlight.png" id="9_un40d"]
 [ext_resource type="Texture2D" uid="uid://dqobp032wic6s" path="res://Textures/Pistol.png" id="10_07y56"]
+[ext_resource type="Script" path="res://Scenes/GunHolder.gd" id="12_5lh0c"]
 [ext_resource type="PackedScene" uid="uid://cn3mftxvn0ajl" path="res://Scenes/DemonBat.tscn" id="14_atbet"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_4wif6"]
@@ -2061,6 +2062,29 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_fs52r"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.187176, 0.187176, 0.187176, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hk28u"]
+gradient = SubResource("Gradient_fs52r")
+width = 18
+height = 2
+
+[sub_resource type="Gradient" id="Gradient_wp8a0"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.292697, 0.830952, 0.500106, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x0l1w"]
+gradient = SubResource("Gradient_wp8a0")
+width = 18
+height = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_fv6j6"]
+font_color = Color(1, 0.435653, 0.358819, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
 [node name="GameNode" type="Node2D"]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
@@ -2139,7 +2163,7 @@ texture = SubResource("GradientTexture2D_418o8")
 position = Vector2(129, -105)
 collision_mask = 3
 motion_mode = 1
-script = ExtResource("6_184o1")
+script = ExtResource("8_awom0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_0eonk")
@@ -2152,11 +2176,11 @@ autoplay = "idle_front"
 centered = false
 offset = Vector2(-8, -13)
 
-[node name="ItemsHolder" type="Node2D" parent="Player"]
+[node name="FlashlightHolder" type="Node2D" parent="Player"]
 rotation = 1.5708
 script = ExtResource("8_3ilbq")
 
-[node name="FlashLight" type="PointLight2D" parent="Player/ItemsHolder"]
+[node name="FlashLight" type="PointLight2D" parent="Player/FlashlightHolder"]
 texture_filter = 1
 position = Vector2(12, -4.34399e-05)
 rotation = -1.5708
@@ -2168,10 +2192,33 @@ shadow_filter_smooth = 0.1
 texture = ExtResource("9_un40d")
 texture_scale = 0.75
 
-[node name="GunSprite2D" type="Sprite2D" parent="Player/ItemsHolder"]
-position = Vector2(10, -3.66092e-05)
+[node name="GunHolder" type="Node2D" parent="Player"]
+rotation = 1.5708
+script = ExtResource("12_5lh0c")
+
+[node name="GunSprite2D" type="Sprite2D" parent="Player/GunHolder"]
+position = Vector2(10, 0)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("10_07y56")
+
+[node name="HealthBar" type="TextureProgressBar" parent="Player"]
+texture_filter = 1
+offset_left = -9.0
+offset_top = -14.0
+offset_right = 31.0
+offset_bottom = 26.0
+value = 100.0
+texture_under = SubResource("GradientTexture2D_hk28u")
+texture_progress = SubResource("GradientTexture2D_x0l1w")
+
+[node name="InfoLabel" type="Label" parent="Player"]
+offset_left = -12.0
+offset_top = -33.0
+offset_right = 12.0
+offset_bottom = -10.0
+label_settings = SubResource("LabelSettings_fv6j6")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 process_callback = 0
@@ -2186,3 +2233,5 @@ tile_set = SubResource("TileSet_31pc1")
 [node name="DemonBat" parent="." instance=ExtResource("14_atbet")]
 position = Vector2(-272, 0)
 motion_mode = 1
+
+[connection signal="health_changed" from="Player" to="Player" method="_on_health_changed"]

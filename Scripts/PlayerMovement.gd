@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 @export var speed = 100
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var item_holder: Node2D = $ItemsHolder
-@onready var gun_sprite: Sprite2D = $ItemsHolder/GunSprite2D
+@onready var gun_holder: Node2D = $GunHolder
+@onready var gun_sprite: Sprite2D = $GunHolder/GunSprite2D
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -15,16 +15,16 @@ func rotate_player():
 	var deg_rot = rad_to_deg(rad_rot)
 	var dir_string: String
 	if deg_rot > 45 && deg_rot <= 135:
-		item_holder.show_behind_parent = false
+		gun_holder.show_behind_parent = false
 		dir_string = "front"
 	elif deg_rot > -45 && deg_rot <= 45:
-		item_holder.show_behind_parent = true
+		gun_holder.show_behind_parent = true
 		dir_string = "right"
 	elif deg_rot > 135 || deg_rot <= -135:
-		item_holder.show_behind_parent = true
+		gun_holder.show_behind_parent = true
 		dir_string = "left"
 	elif deg_rot > -135 && deg_rot <= -45:
-		item_holder.show_behind_parent = true
+		gun_holder.show_behind_parent = true
 		dir_string = "back"
 	if velocity.length() > 0:
 		animated_sprite.animation = "run_" + dir_string
