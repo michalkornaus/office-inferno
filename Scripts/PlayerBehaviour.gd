@@ -10,7 +10,8 @@ var current_health: int:
 signal health_changed(amount, dmg_type)
 
 @onready var health_bar: TextureProgressBar = $HealthBar
-@onready var info_label: Label = $InfoLabel
+#@onready var info_label: Label = $InfoLabel
+@export var info_label: PackedScene
 
 func _ready():
 	current_health = player_health
@@ -26,6 +27,22 @@ func change_health(amount, dmg_type):
 func _on_health_changed(amount, dmg_type):
 	if amount == 0:
 		return
-	info_label.text = str(amount)
-	await get_tree().create_timer(0.5).timeout
-	info_label.text = ""
+	var new_label = info_label.instantiate()
+	new_label.position = Vector2(randi_range(-12, -20), randi_range(-27, -33))
+	new_label.wait_time = 0.5 + (0.01 * abs(amount))
+	if amount > 0:
+		new_label.modulate = Color.GREEN
+		new_label.text = "+" + str(amount)
+	elif amount < 0:
+		var color: Color
+		match dmg_type:
+			"Physical": color = Color.RED
+			"Fire": color = Color.ORANGE_RED
+			"Acid": color = Color.DARK_GREEN
+			"Bleed": color = Color.DARK_RED
+			"Curse": color = Color.BLUE_VIOLET
+			"Magic": color = Color.DARK_VIOLET
+			"Ice": color = Color.DEEP_SKY_BLUE
+		new_label.modulate = color
+		new_label.text = "-" + str(abs(amount))
+	add_child(new_label)

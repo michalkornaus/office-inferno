@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cn3mftxvn0ajl"]
+[gd_scene load_steps=16 format=3 uid="uid://cn3mftxvn0ajl"]
 
 [ext_resource type="Texture2D" uid="uid://dctyu0v4vy64r" path="res://Textures/Nietoperek.png" id="1_refi1"]
 [ext_resource type="Script" path="res://Scripts/DemonBat.gd" id="1_seol0"]
@@ -40,12 +40,15 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dm8oq"]
-radius = 5.0
+radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jexib"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_il7d4"]
 radius = 150.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rsu4e"]
+light_mode = 1
 
 [sub_resource type="Gradient" id="Gradient_mljld"]
 offsets = PackedFloat32Array(0)
@@ -66,6 +69,8 @@ width = 18
 height = 2
 
 [node name="DemonBat" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 9
 script = ExtResource("1_seol0")
 attack_cooldown = 1.0
 
@@ -79,21 +84,29 @@ frame_progress = 0.22637
 shape = SubResource("CircleShape2D_dm8oq")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
 
 [node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="HitArea2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea2D"]
 shape = SubResource("CircleShape2D_jexib")
 
 [node name="DetectionArea2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea2D"]
 shape = SubResource("CircleShape2D_il7d4")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
+self_modulate = Color(0.8, 0.8, 0.8, 1)
 texture_filter = 1
+material = SubResource("CanvasItemMaterial_rsu4e")
 offset_left = -9.0
 offset_top = -14.0
 offset_right = 31.0

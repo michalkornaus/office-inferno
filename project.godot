@@ -19,9 +19,13 @@ config/icon="res://Textures/icon.svg"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/mode=4
 window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
 window/stretch/scale_mode="integer"
+
+[gui]
+
+theme/custom_font="res://m5x7.ttf"
 
 [input]
 

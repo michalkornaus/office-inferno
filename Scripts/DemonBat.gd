@@ -22,7 +22,7 @@ func _ready():
 func actor_setup():
 	await get_tree().physics_frame
 	mapRID = navigation_agent.get_navigation_map()
-	regionRID = NavigationServer2D.map_get_regions(mapRID)[0]
+	regionRID = NavigationServer2D.map_get_regions(mapRID)[0] 
 	set_movement_target(await find_random_destination(75))
 
 func find_random_destination(distance: float):
@@ -63,6 +63,7 @@ func _on_hit_area_2d_body_entered(body):
 	if body == target:
 		can_attack = true
 		if attack_timer.is_stopped():
+			target.change_health(-attack_damage, "Physical")
 			attack_timer.start()
 
 func _on_hit_area_2d_body_exited(body):
