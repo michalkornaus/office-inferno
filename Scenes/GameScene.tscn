@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://v18t2wnr7kcu"]
+[gd_scene load_steps=37 format=4 uid="uid://v18t2wnr7kcu"]
 
 [ext_resource type="Texture2D" uid="uid://bgaclpt6b4jbu" path="res://Textures/Room_Builder_free_16x16.png" id="1_hcseg"]
 [ext_resource type="Texture2D" uid="uid://b4i3wf3eri56p" path="res://Textures/Interiors_free_16x16.png" id="2_0vfrd"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/CameraMovement.gd" id="5_00dp4"]
 [ext_resource type="PackedScene" uid="uid://dh0y6hspyvu8j" path="res://Scenes/Player.tscn" id="9_dsduy"]
 [ext_resource type="Texture2D" uid="uid://bwmkwolp74f4p" path="res://Textures/flashlight_pointlight.png" id="9_un40d"]
+[ext_resource type="PackedScene" uid="uid://cd22h0318b3j" path="res://Scenes/PistolBullet.tscn" id="12_wyek6"]
 [ext_resource type="PackedScene" uid="uid://cn3mftxvn0ajl" path="res://Scenes/DemonBat.tscn" id="14_atbet"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_4wif6"]
@@ -1867,6 +1868,7 @@ texture = SubResource("GradientTexture2D_418o8")
 
 [node name="Player" parent="." instance=ExtResource("9_dsduy")]
 position = Vector2(129, -105)
+pistol_scene = ExtResource("12_wyek6")
 
 [node name="DemonBat" parent="." instance=ExtResource("14_atbet")]
 position = Vector2(-280, -96)

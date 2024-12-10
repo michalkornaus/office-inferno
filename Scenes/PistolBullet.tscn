@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://cd22h0318b3j"]
+
+[ext_resource type="Texture2D" uid="uid://da0jum6prm7ki" path="res://Textures/neutral_point_light.webp" id="1_1ptad"]
+[ext_resource type="Script" path="res://Scenes/BulletBehaviour.gd" id="1_v4sei"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k8p0v"]
+radius = 1.0
+height = 4.0
+
+[sub_resource type="Gradient" id="Gradient_uclq4"]
+offsets = PackedFloat32Array(0.570225)
+colors = PackedColorArray(0.100624, 0.0469366, 0.000484562, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8ee8v"]
+gradient = SubResource("Gradient_uclq4")
+width = 1
+
+[node name="PistolBullet" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 9
+motion_mode = 1
+script = ExtResource("1_v4sei")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_k8p0v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 1)
+rotation = -1.5708
+scale = Vector2(2, 4)
+texture = SubResource("GradientTexture1D_8ee8v")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("1_1ptad")
+texture_scale = 0.15

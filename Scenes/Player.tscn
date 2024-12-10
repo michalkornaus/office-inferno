@@ -456,6 +456,9 @@ position = Vector2(10, 0)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("8_hfl0g")
 
+[node name="GunMuzzle" type="Node2D" parent="GunHolder/GunSprite2D"]
+position = Vector2(6.4, -5.22137e-05)
+
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 self_modulate = Color(0.800491, 0.800491, 0.800491, 1)
 texture_filter = 1

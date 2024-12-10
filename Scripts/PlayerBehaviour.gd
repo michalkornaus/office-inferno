@@ -1,4 +1,5 @@
 extends "res://Scripts/PlayerMovement.gd"
+class_name Player
 
 @export var player_health: int = 100
 var current_health: int:
@@ -12,6 +13,9 @@ signal health_changed(amount, dmg_type)
 @onready var health_bar: TextureProgressBar = $HealthBar
 @export var info_label: PackedScene
 
+@onready var gun_muzzle: Node2D = $GunHolder/GunSprite2D/GunMuzzle
+@export var pistol_scene: PackedScene
+
 func _ready():
 	current_health = player_health
 	health_bar.set_max(player_health)
@@ -20,28 +24,15 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			check_collision()
+			spawn_projectile()
+			#check_collision()
 			
-var can_draw: bool = false
-var result_pos: Vector2 
-func check_collision():
-	var end_pos = global_position + global_position.direction_to(get_global_mouse_position()) * 1000
-	var query = PhysicsRayQueryParameters2D.create(global_position, end_pos)
-	query.collide_with_bodies = true
-	query.exclude = [self]
-	var result = get_world_2d().direct_space_state.intersect_ray(query)
-	print(result)
-	if result:
-		if result.collider.is_in_group("Enemy"):
-			result.collider.change_health(-5, "Fire")
-		result_pos = result.position
-		can_draw = true
-		queue_redraw()
-		
-func _draw():
-	if can_draw:
-		draw_line(to_local(global_position), to_local(result_pos), Color.RED, 16, false)
-		can_draw = false
+func spawn_projectile():
+	var new_bullet = pistol_scene.instantiate()
+	new_bullet.position = gun_muzzle.global_position
+	new_bullet.look_at(get_global_mouse_position())
+	new_bullet.velocity = gun_muzzle.global_position.direction_to(get_global_mouse_position())
+	get_parent().add_child(new_bullet)
 
 func change_health(amount, dmg_type):
 	self.current_health += amount

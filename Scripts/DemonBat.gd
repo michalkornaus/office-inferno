@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Bat
 ## HEALTH VARIABLES
 @export var enemy_health: int = 25
 var current_health: int:
