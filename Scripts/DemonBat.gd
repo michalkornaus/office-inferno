@@ -62,10 +62,12 @@ func find_random_destination(distance: float):
 func set_movement_target(movement_target: Vector2):
 	navigation_agent.target_position = movement_target
 func target_reachable(_target):
+	if !mapRID.is_valid():
+		return false
 	var path = NavigationServer2D.map_get_path(mapRID, global_position, _target, true)
 	return path[path.size() - 1].is_equal_approx(_target)
 func _physics_process(delta):
-	if !is_target_reachable:
+	if !is_target_reachable && mapRID.is_valid():
 		if navigation_agent.is_navigation_finished() && navigation_agent.is_target_reached():
 			if target != null:
 				if target_reachable(target.global_position):
@@ -81,7 +83,6 @@ func _physics_process(delta):
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 	velocity = current_agent_position.direction_to(next_path_position) * movement_speed
 	move_and_slide()
-
 
 ## ATTACKING FUNCTIONS
 func _on_detection_area_2d_body_entered(body):
