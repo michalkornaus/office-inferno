@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3q4nf00o5r52"]
+
+[sub_resource type="Gradient" id="Gradient_algkp"]
+offsets = PackedFloat32Array(0.171233, 0.640411)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_418o8"]
+gradient = SubResource("Gradient_algkp")
+fill = 1
+fill_from = Vector2(0.5, 0.25)
+fill_to = Vector2(1, 0.565)
+
+[node name="TVLight" type="PointLight2D"]
+color = Color(0.974672, 0.976295, 0.950798, 1)
+energy = 0.4
+shadow_enabled = true
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_418o8")

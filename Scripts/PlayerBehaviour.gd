@@ -9,12 +9,16 @@ var current_health: int:
 		current_health = value
 		health_bar.set_value(current_health)
 signal health_changed(amount, dmg_type)
-
 @onready var health_bar: TextureProgressBar = $HealthBar
+
+@export_category("Reference scenes")
 @export var info_label: PackedScene
+@export var bullet_scene: PackedScene
 
 @onready var gun_muzzle: Node2D = $GunHolder/GunSprite2D/GunMuzzle
-@export var pistol_scene: PackedScene
+@onready var attack_timer: Timer = $AttackTimer
+signal shoot_bullet()
+var can_shoot: bool = false
 
 func _ready():
 	current_health = player_health
@@ -23,16 +27,29 @@ func _ready():
 	
 func _input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			spawn_projectile()
-			#check_collision()
-			
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.is_pressed():
+				emit_signal("shoot_bullet")
+			elif event.is_released():
+				can_shoot = false
+	
 func spawn_projectile():
-	var new_bullet = pistol_scene.instantiate()
+	var new_bullet = bullet_scene.instantiate()
 	new_bullet.position = gun_muzzle.global_position
 	new_bullet.look_at(get_global_mouse_position())
 	new_bullet.velocity = gun_muzzle.global_position.direction_to(get_global_mouse_position())
 	get_parent().add_child(new_bullet)
+	
+func _on_shoot_bullet():
+	can_shoot = true
+	if attack_timer.is_stopped():
+		spawn_projectile()
+		attack_timer.start()
+	
+func _on_attack_timer_timeout():
+	if can_shoot:
+		spawn_projectile()
+		attack_timer.start()
 
 func change_health(amount, dmg_type):
 	self.current_health += amount

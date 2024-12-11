@@ -22,34 +22,22 @@ extends Object
 		#can_draw = false
 
 ## Code for bouncing bullets
-#extends CharacterBody2D
-#class_name Bullet
-#
-#@export var damage := 10.0
-#@export var initial_velocity := Vector2(50, 50)
-#@export var max_collisions := 6
-#
-#var collision_count := 0
-#
-#func _ready():
-	#velocity = initial_velocity
-#
-#func _physics_process(delta):
-	#collision_count = 0
-	#var collision = move_and_collide(velocity * delta)
-	#
-	#while (collision and collision_count < max_collisions):
+#var max_collisions: int = 1000
+#var collisions_count: int = 0
+#var slide = move_and_slide()
+	#while (slide and collisions_count < max_collisions):
+		#var collision = get_last_slide_collision()
 		#var collider = collision.get_collider()
-		#
-		#if collider is Player:
-			#collider.hit(damage)
-			#queue.free()
+		#if collider is Bat:
+			#collider.change_health(-5, "Fire")	
+			#queue_free()
 			#break
 		#else:
 			#var normal = collision.get_normal()
 			#var remainder = collision.get_remainder()
 			#velocity = velocity.bounce(normal)
 			#remainder = remainder.bounce(normal)
-			#
-			#collision_count += 1
-			#collision = move_and_collide(remainder)
+			#collisions_count += 1
+			#slide = move_and_slide()
+	#if collisions_count >= max_collisions:
+		#queue_free()

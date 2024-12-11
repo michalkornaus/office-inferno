@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg0kmyhq7upgw"]
+
+[ext_resource type="Texture2D" uid="uid://da0jum6prm7ki" path="res://Textures/neutral_point_light.webp" id="1_3wjp5"]
+[ext_resource type="Script" path="res://Scripts/BlinkingLight.gd" id="2_hnmrc"]
+
+[node name="BlinkingPointLight" type="PointLight2D"]
+position = Vector2(40, 192)
+color = Color(0.752008, 0.533474, 0.515413, 1)
+energy = 0.4
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("1_3wjp5")
+texture_scale = 0.45
+script = ExtResource("2_hnmrc")

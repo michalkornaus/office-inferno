@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp0dq8wr6fjp1"]
+
+[ext_resource type="Texture2D" uid="uid://bwmkwolp74f4p" path="res://Textures/flashlight_pointlight.png" id="1_4n1y6"]
+
+[node name="WindowLight" type="PointLight2D"]
+color = Color(0.974672, 0.976295, 0.950798, 1)
+energy = 0.8
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("1_4n1y6")
+texture_scale = 0.6
