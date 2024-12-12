@@ -20,7 +20,7 @@ var regionRID: RID
 ## Distance in pixels in which enemy will search for new point on tilemap
 @export var new_wavepoint_distance: float = 75
 var movement_target_position: Vector2
-var target: CharacterBody2D
+var player_target: CharacterBody2D
 var is_target_reachable: bool = false
 ## ATTACKING VARIABLES
 @export_category("Attack variables")
@@ -69,38 +69,45 @@ func target_reachable(_target):
 func _physics_process(delta):
 	if !is_target_reachable && mapRID.is_valid():
 		if navigation_agent.is_navigation_finished() && navigation_agent.is_target_reached():
-			if target != null:
-				if target_reachable(target.global_position):
+			if player_target != null:
+				if target_reachable(player_target.global_position):
 					is_target_reachable = true
 					return
 			set_movement_target(await find_random_destination(75))
 			return
-	elif is_target_reachable && target != null:
-		if movement_target_position != target.global_position:
-			movement_target_position = target.global_position
+	elif is_target_reachable && player_target != null:
+		if movement_target_position != player_target.global_position:
+			movement_target_position = player_target.global_position
 			set_movement_target(movement_target_position)
-	var current_agent_position: Vector2 = global_position
-	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
-	velocity = current_agent_position.direction_to(next_path_position) * movement_speed
+			
+	var next_path_position: Vector2
+	#if global_position.distance_to(navigation_agent.target_position) > 25.0:
+	var query = PhysicsRayQueryParameters2D.create(global_position, navigation_agent.target_position, 0x1)
+	var result = get_world_2d().direct_space_state.intersect_ray(query)
+	if !result:
+		next_path_position = navigation_agent.target_position
+	else:
+		next_path_position = navigation_agent.get_next_path_position()
+	velocity = global_position.direction_to(next_path_position) * movement_speed
 	move_and_slide()
 
 ## ATTACKING FUNCTIONS
 func _on_detection_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
-		target = body
-		is_target_reachable = target_reachable(target.global_position)
+		player_target = body
+		is_target_reachable = target_reachable(player_target.global_position)
 func _on_hit_area_2d_body_entered(body):
-	if body == target:
+	if body == player_target:
 		can_attack = true
 		if attack_timer.is_stopped():
-			target.change_health(-attack_damage, "Physical")
+			player_target.change_health(-attack_damage, "Physical")
 			attack_timer.start()
 func _on_hit_area_2d_body_exited(body):
-	if body == target:
+	if body == player_target:
 		can_attack = false
 func _on_attack_timer_timeout():
 	if can_attack:
-		target.change_health(-attack_damage, "Physical")
+		player_target.change_health(-attack_damage, "Physical")
 		attack_timer.start()
 
 ## HEALTH FUNCTIONS
