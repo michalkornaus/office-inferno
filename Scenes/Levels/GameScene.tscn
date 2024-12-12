@@ -1,16 +1,17 @@
-[gd_scene load_steps=30 format=4 uid="uid://v18t2wnr7kcu"]
+[gd_scene load_steps=31 format=4 uid="uid://v18t2wnr7kcu"]
 
-[ext_resource type="Texture2D" uid="uid://bgaclpt6b4jbu" path="res://Textures/Room_Builder_free_16x16.png" id="1_1uxy2"]
+[ext_resource type="Texture2D" uid="uid://bgaclpt6b4jbu" path="res://Textures/Tilesets/Room_Builder_free_16x16.png" id="1_1uxy2"]
 [ext_resource type="PackedScene" uid="uid://ck84vu5dtg7g2" path="res://Scenes/Level Making/Doors.tscn" id="2_xyirh"]
-[ext_resource type="Texture2D" uid="uid://b4i3wf3eri56p" path="res://Textures/Interiors_free_16x16.png" id="3_ak0b8"]
-[ext_resource type="Texture2D" uid="uid://viwoninuwnvo" path="res://Textures/Desk.png" id="4_j8whu"]
-[ext_resource type="Texture2D" uid="uid://bb0vxglk5csgw" path="res://Textures/DeskWithChair.png" id="5_gi7f2"]
+[ext_resource type="Texture2D" uid="uid://b4i3wf3eri56p" path="res://Textures/Tilesets/Interiors_free_16x16.png" id="3_ak0b8"]
+[ext_resource type="Texture2D" uid="uid://viwoninuwnvo" path="res://Textures/Tilesets/Desk.png" id="4_j8whu"]
+[ext_resource type="Texture2D" uid="uid://bb0vxglk5csgw" path="res://Textures/Tilesets/DeskWithChair.png" id="5_gi7f2"]
 [ext_resource type="Texture2D" uid="uid://da0jum6prm7ki" path="res://Textures/neutral_point_light.webp" id="6_y8xle"]
-[ext_resource type="Script" path="res://Scripts/BlinkingLight.gd" id="7_5dpfn"]
+[ext_resource type="Script" path="res://Scripts/blinking_light.gd" id="7_5dpfn"]
 [ext_resource type="Texture2D" uid="uid://bwmkwolp74f4p" path="res://Textures/flashlight_pointlight.png" id="8_g0wai"]
 [ext_resource type="PackedScene" uid="uid://dh0y6hspyvu8j" path="res://Scenes/Player/Player.tscn" id="9_3rbu2"]
 [ext_resource type="PackedScene" uid="uid://cn3mftxvn0ajl" path="res://Scenes/Enemies/DemonBat.tscn" id="10_ksk1i"]
-[ext_resource type="Script" path="res://Scripts/CameraMovement.gd" id="11_7e5fu"]
+[ext_resource type="Script" path="res://Scripts/camera_movement.gd" id="11_7e5fu"]
+[ext_resource type="PackedScene" uid="uid://bjhg3ydjeb8ru" path="res://Scenes/Enemies/DemonBlob.tscn" id="12_e65mf"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8qw86"]
 vertices = PackedVector2Array(38, 177.211, 42.9531, 177.172, 38, 181.367, -28.0469, 139.758, -38, 139.867, -38, 106, 6, 106, 6, 154, -16, 147.75, 38, 209.211, 54, 209.078, 54, 209.211, -38, 214, 70, 209.078, 70, 214, -38, 202, -15.2109, 202, -14.9219, 166, 38, 154, -15.0469, 166, -14.9219, 150, -16, 150, -27.9219, 147.75, -214, 48.0781, -202, 47.8125, -166, 48.0781, -294, 54, -186.156, 6, -214, -47.9219, -202, -48.2109, -166, -47.9219, -163.039, 6, -150, 48.0781, -122, 54, 182, -54, 182, 38, 166, 38, 154, 26, 154, -42, 166, -54, -122, -118, -122, -38, -150, -47.9219, -150, -77.2031, -122, -10, -150, 18.7969, -214, -77.2031, -202, -77.7969, -214, 18.7969, -202, 18.2109, -230, 48.0781, -230, 47.9531, -166, 47.9531, -266, 47.8125, -294, -118, -266, 18.2109, -250.156, 6, -266, -48.2109, -227.039, -90, -230, -95.9219, -230, -96.0391, -214, -95.9219, -163.039, -90, -166, -95.9219, -166, -96.0391, -150, -95.9219, -227.039, 6, -230, -47.9219, -230, -48.0391, -166, -48.0391, -214, -118, -202, -118, -202, -96.2109, -150, -118, -186.148, -90, -250.148, -90, -266, -96.2109, -266, -77.7969, -54, -38, -54, -54, 90, -54, 102, -42, 74, 22, 6, 22, 90, -102, 166, -102, 102, 26, 166, 54, 90, 54, 90, 38, 74, 38, 6, 54, -10, 54, -10, 62, -22, 62, -22, 54, -38, 54, -38, 22, -54, 22, -54, -10, -266, -118)
@@ -1788,3 +1789,7 @@ player = NodePath("../Player")
 texture_filter = 1
 tile_map_data = PackedByteArray("AAD//wQAAQAMAAMAAQD+/wQAAQAMAAMAAQA=")
 tile_set = SubResource("TileSet_31pc1")
+
+[node name="DemonBlob" parent="." instance=ExtResource("12_e65mf")]
+position = Vector2(-217, -16)
+movement_speed = 45.0

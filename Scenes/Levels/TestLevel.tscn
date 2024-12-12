@@ -1,11 +1,11 @@
 [gd_scene load_steps=24 format=4 uid="uid://b1eb0otecg33e"]
 
-[ext_resource type="Texture2D" uid="uid://bgaclpt6b4jbu" path="res://Textures/Room_Builder_free_16x16.png" id="1_wclpt"]
-[ext_resource type="Texture2D" uid="uid://b4i3wf3eri56p" path="res://Textures/Interiors_free_16x16.png" id="2_cnwyo"]
-[ext_resource type="Texture2D" uid="uid://viwoninuwnvo" path="res://Textures/Desk.png" id="3_b10jk"]
-[ext_resource type="Texture2D" uid="uid://bb0vxglk5csgw" path="res://Textures/DeskWithChair.png" id="4_qtw1w"]
+[ext_resource type="Texture2D" uid="uid://bgaclpt6b4jbu" path="res://Textures/Tilesets/Room_Builder_free_16x16.png" id="1_wclpt"]
+[ext_resource type="Texture2D" uid="uid://b4i3wf3eri56p" path="res://Textures/Tilesets/Interiors_free_16x16.png" id="2_cnwyo"]
+[ext_resource type="Texture2D" uid="uid://viwoninuwnvo" path="res://Textures/Tilesets/Desk.png" id="3_b10jk"]
+[ext_resource type="Texture2D" uid="uid://bb0vxglk5csgw" path="res://Textures/Tilesets/DeskWithChair.png" id="4_qtw1w"]
 [ext_resource type="PackedScene" uid="uid://dh0y6hspyvu8j" path="res://Scenes/Player/Player.tscn" id="5_7ccfa"]
-[ext_resource type="Script" path="res://Scripts/CameraMovement.gd" id="6_5b2jm"]
+[ext_resource type="Script" path="res://Scripts/camera_movement.gd" id="6_5b2jm"]
 [ext_resource type="PackedScene" uid="uid://cn3mftxvn0ajl" path="res://Scenes/Enemies/DemonBat.tscn" id="7_d6u0h"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_io13l"]

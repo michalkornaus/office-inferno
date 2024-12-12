@@ -1,4 +1,4 @@
-extends "res://Scripts/PlayerMovement.gd"
+extends PlayerMovement
 class_name Player
 
 @export var player_health: int = 100

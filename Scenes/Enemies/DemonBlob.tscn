@@ -1,47 +1,40 @@
-[gd_scene load_steps=17 format=3 uid="uid://cn3mftxvn0ajl"]
+[gd_scene load_steps=16 format=3 uid="uid://bjhg3ydjeb8ru"]
 
-[ext_resource type="Script" path="res://Scripts/demon_bat.gd" id="1_seol0"]
-[ext_resource type="PackedScene" uid="uid://og7c2jlyxtlc" path="res://Scenes/InfoLabel.tscn" id="2_h23y5"]
-[ext_resource type="Texture2D" uid="uid://db5ewtn0baa3q" path="res://Textures/Enemies/BatTexture.png" id="3_mtq5e"]
+[ext_resource type="Texture2D" uid="uid://dgkg25hdj0pw3" path="res://Textures/Enemies/Blob.png" id="1_5bxb1"]
+[ext_resource type="Script" path="res://Scripts/demon_blob.gd" id="1_l7uap"]
+[ext_resource type="PackedScene" uid="uid://og7c2jlyxtlc" path="res://Scenes/InfoLabel.tscn" id="2_7lpiv"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gyyyx"]
-atlas = ExtResource("3_mtq5e")
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbydg"]
+atlas = ExtResource("1_5bxb1")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vcxeq"]
-atlas = ExtResource("3_mtq5e")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mej5r"]
+atlas = ExtResource("1_5bxb1")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mswte"]
-atlas = ExtResource("3_mtq5e")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4efdp"]
+atlas = ExtResource("1_5bxb1")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x8hih"]
-atlas = ExtResource("3_mtq5e")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_2sw3y"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_n670m"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gyyyx")
+"texture": SubResource("AtlasTexture_pbydg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vcxeq")
+"texture": SubResource("AtlasTexture_mej5r")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mswte")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x8hih")
+"texture": SubResource("AtlasTexture_4efdp")
 }],
 "loop": true,
-"name": &"fly",
+"name": &"walk",
 "speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dm8oq"]
-radius = 7.0
+radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jexib"]
 radius = 15.0
@@ -70,18 +63,24 @@ gradient = SubResource("Gradient_6iu4l")
 width = 18
 height = 2
 
-[node name="DemonBat" type="CharacterBody2D" groups=["Enemy"]]
+[node name="DemonBlob" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 8
 collision_mask = 9
-script = ExtResource("1_seol0")
-info_label = ExtResource("2_h23y5")
-new_wavepoint_distance = 100.0
+script = ExtResource("1_l7uap")
+enemy_health = 50
+info_label = ExtResource("2_7lpiv")
+movement_speed = 75.0
+new_wavepoint_distance = 50.0
+target_detection_range = 100.0
+attack_damage = 15.0
+attack_cooldown = 1.5
+attack_range = 20.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_2sw3y")
-animation = &"fly"
-autoplay = "fly"
-frame_progress = 0.22637
+sprite_frames = SubResource("SpriteFrames_n670m")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.246245
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dm8oq")

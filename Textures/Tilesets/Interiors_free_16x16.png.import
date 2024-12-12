@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqobp032wic6s"
-path="res://.godot/imported/Pistol.png-357e03540f8dcb75c1a270971801fca7.ctex"
+uid="uid://b4i3wf3eri56p"
+path="res://.godot/imported/Interiors_free_16x16.png-187135a4e61e52acb315aec1a7c8c9eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Pistol.png"
-dest_files=["res://.godot/imported/Pistol.png-357e03540f8dcb75c1a270971801fca7.ctex"]
+source_file="res://Textures/Tilesets/Interiors_free_16x16.png"
+dest_files=["res://.godot/imported/Interiors_free_16x16.png-187135a4e61e52acb315aec1a7c8c9eb.ctex"]
 
 [params]
 

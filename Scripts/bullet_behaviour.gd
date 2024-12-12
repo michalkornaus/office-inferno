@@ -8,7 +8,7 @@ func _physics_process(delta):
 	if slide: #if slide == true, collision occurred -> destroy bullet
 		var collision = get_last_slide_collision()
 		var collider = collision.get_collider()
-		if collider is not Bat:
+		if !collider.is_in_group("Enemy"):
 			queue_free()
 		else:
 			collider.change_health(-5, "Fire")	

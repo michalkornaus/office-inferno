@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgaclpt6b4jbu"
-path="res://.godot/imported/Room_Builder_free_16x16.png-e4bdd0d3c9f2b6d4dba96c0878f81887.ctex"
+uid="uid://db5ewtn0baa3q"
+path="res://.godot/imported/BatTexture.png-7ae698dd653aabf74068f9be456220d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Room_Builder_free_16x16.png"
-dest_files=["res://.godot/imported/Room_Builder_free_16x16.png-e4bdd0d3c9f2b6d4dba96c0878f81887.ctex"]
+source_file="res://Textures/Enemies/BatTexture.png"
+dest_files=["res://.godot/imported/BatTexture.png-7ae698dd653aabf74068f9be456220d6.ctex"]
 
 [params]
 
