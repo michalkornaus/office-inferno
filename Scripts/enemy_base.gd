@@ -22,7 +22,7 @@ var regionRID: RID
 ## Distance in pixels in which enemy will search for new point on tilemap
 @export var new_wavepoint_distance: float = 75
 @export var target_detection_range: float = 150
-var movement_target_position: Vector2
+#var movement_target_position: Vector2
 var player_target: CharacterBody2D
 var is_target_reachable: bool = false
 

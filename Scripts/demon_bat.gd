@@ -10,9 +10,8 @@ func _physics_process(delta):
 			set_movement_target(await find_random_destination(75))
 			return
 	elif is_target_reachable && player_target != null:
-		if movement_target_position != player_target.global_position:
-			movement_target_position = player_target.global_position
-			set_movement_target(movement_target_position)
+		## Maybe add some tick/interval between setting movement target
+		set_movement_target(player_target.global_position)
 	var next_path_position: Vector2
 	#if global_position.distance_to(navigation_agent.target_position) > 25.0:
 	var query = PhysicsRayQueryParameters2D.create(global_position, navigation_agent.target_position, 0x1)
