@@ -69,7 +69,7 @@ func find_random_destination(distance: float):
 			break
 	return random_point
 func set_movement_target(movement_target: Vector2):
-	navigation_agent.target_position = movement_target
+	navigation_agent.target_position = movement_targwwwwwwwwwwet
 func target_reachable(_target):
 	if !mapRID.is_valid():
 		return false
