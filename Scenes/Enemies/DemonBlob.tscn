@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://bjhg3ydjeb8ru"]
 
 [ext_resource type="Texture2D" uid="uid://dgkg25hdj0pw3" path="res://Textures/Enemies/Blob.png" id="1_5bxb1"]
-[ext_resource type="Script" path="res://Scripts/demon_blob.gd" id="1_l7uap"]
+[ext_resource type="Script" uid="uid://b4eevxfdvsfw7" path="res://Scripts/demon_blob.gd" id="1_l7uap"]
 [ext_resource type="PackedScene" uid="uid://og7c2jlyxtlc" path="res://Scenes/InfoLabel.tscn" id="2_7lpiv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbydg"]

@@ -5,9 +5,10 @@ func _ready():
 
 func _physics_process(delta):
 	var slide = move_and_slide()
-	if slide: #if slide == true, collision occurred -> destroy bullet
+	if slide:
 		var collision = get_last_slide_collision()
 		var collider = collision.get_collider()
+		print(collider)
 		if !collider.is_in_group("Enemy"):
 			queue_free()
 		else:

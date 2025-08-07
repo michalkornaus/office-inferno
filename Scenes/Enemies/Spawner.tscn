@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cire7eka6tcr7"]
 
-[ext_resource type="Script" path="res://Scripts/spawner.gd" id="1_07jxq"]
+[ext_resource type="Script" uid="uid://bur7muyrsno5h" path="res://Scripts/spawner.gd" id="1_07jxq"]
 [ext_resource type="PackedScene" uid="uid://cn3mftxvn0ajl" path="res://Scenes/Enemies/DemonBat.tscn" id="2_o4egn"]
 
 [node name="Spawner" type="Node2D"]

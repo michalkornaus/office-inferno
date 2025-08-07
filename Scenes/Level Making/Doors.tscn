@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ck84vu5dtg7g2"]
 
-[ext_resource type="Script" path="res://Scripts/doors.gd" id="1_7ldnj"]
+[ext_resource type="Script" uid="uid://cfs5n46x445g6" path="res://Scripts/doors.gd" id="1_7ldnj"]
 [ext_resource type="Texture2D" uid="uid://b4i3wf3eri56p" path="res://Textures/Tilesets/Interiors_free_16x16.png" id="2_ibgyg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ooq5"]
@@ -70,8 +70,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_asib0"]
 _data = {
-"Open": SubResource("Animation_cytni"),
-"RESET": SubResource("Animation_qlw4d")
+&"Open": SubResource("Animation_cytni"),
+&"RESET": SubResource("Animation_qlw4d")
 }
 
 [node name="Doors" type="Node2D"]

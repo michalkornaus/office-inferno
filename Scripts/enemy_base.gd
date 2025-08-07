@@ -44,7 +44,7 @@ func _ready():
 	# Setup areas 2D ranges
 	$HitArea2D/CollisionShape2D.shape.radius = attack_range
 	$DetectionArea2D/CollisionShape2D.shape.radius = target_detection_range
-	# Setup navmesh variables
+	# Setup navmesh variabless
 	navigation_agent.path_desired_distance = 4.0
 	navigation_agent.target_desired_distance = 4.0
 	attack_timer.wait_time = attack_cooldown
@@ -56,6 +56,7 @@ func actor_setup():
 	mapRID = navigation_agent.get_navigation_map()
 	regionRID = NavigationServer2D.map_get_regions(mapRID)[0] 
 	set_movement_target(await find_random_destination(75))
+	
 func find_random_destination(distance: float):
 	await get_tree().physics_frame
 	var is_point_in_area: bool = false
@@ -68,8 +69,14 @@ func find_random_destination(distance: float):
 			is_point_in_area = true
 			break
 	return random_point
+	
 func set_movement_target(movement_target: Vector2):
+<<<<<<< Updated upstream
 	navigation_agent.target_position = movement_targwwwwwwwwwwet
+=======
+	navigation_agent.target_position = movement_target
+	
+>>>>>>> Stashed changes
 func target_reachable(_target):
 	if !mapRID.is_valid():
 		return false

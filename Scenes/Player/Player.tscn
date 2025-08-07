@@ -1,13 +1,13 @@
 [gd_scene load_steps=65 format=3 uid="uid://dh0y6hspyvu8j"]
 
-[ext_resource type="Script" path="res://Scripts/player_behaviour.gd" id="1_p418b"]
+[ext_resource type="Script" uid="uid://b0hr4swoahhc2" path="res://Scripts/player_behaviour.gd" id="1_p418b"]
 [ext_resource type="PackedScene" uid="uid://og7c2jlyxtlc" path="res://Scenes/InfoLabel.tscn" id="2_lq0ry"]
 [ext_resource type="PackedScene" uid="uid://cd22h0318b3j" path="res://Scenes/Player/PistolBullet.tscn" id="3_v55vv"]
 [ext_resource type="Texture2D" uid="uid://dbkdqhondkxvt" path="res://Textures/Player/Bob_idle_anim_16x16.png" id="3_yulou"]
 [ext_resource type="Texture2D" uid="uid://c3daby40e1hu7" path="res://Textures/Player/Bob_run_16x16.png" id="4_aifg4"]
-[ext_resource type="Script" path="res://Scripts/flashlight.gd" id="5_nka70"]
+[ext_resource type="Script" uid="uid://beseam0q4447k" path="res://Scripts/flashlight.gd" id="5_nka70"]
 [ext_resource type="Texture2D" uid="uid://bwmkwolp74f4p" path="res://Textures/flashlight_pointlight.png" id="6_u30rr"]
-[ext_resource type="Script" path="res://Scripts/gun_holder.gd" id="7_hxc58"]
+[ext_resource type="Script" uid="uid://dquuolfx4n065" path="res://Scripts/gun_holder.gd" id="7_hxc58"]
 [ext_resource type="Texture2D" uid="uid://dqobp032wic6s" path="res://Textures/Player/Pistol.png" id="8_hfl0g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0eonk"]
