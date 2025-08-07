@@ -71,12 +71,8 @@ func find_random_destination(distance: float):
 	return random_point
 	
 func set_movement_target(movement_target: Vector2):
-<<<<<<< Updated upstream
-	navigation_agent.target_position = movement_targwwwwwwwwwwet
-=======
 	navigation_agent.target_position = movement_target
 	
->>>>>>> Stashed changes
 func target_reachable(_target):
 	if !mapRID.is_valid():
 		return false
